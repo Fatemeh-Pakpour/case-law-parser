@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: case-law-parser-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-case_law}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-case_law_password}
+      POSTGRES_DB: ${POSTGRES_DB:-case_law}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - case_law_parser_pgdata:/var/lib/postgresql/data
+
+volumes:
+  case_law_parser_pgdata:
