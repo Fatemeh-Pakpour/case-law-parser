@@ -1,50 +1,57 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# case-law-parser – Project Constitution
 
-## Core Principles
+## 0. Meta
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+- **Repo name:** `case-law-parser`
+- **This file:** `memory/constitution.md`
+- **Purpose of this document:**  
+  Define the **architecture, folder structure, conventions, and guardrails** for the project so that tools, contributors, and future-you know how to evolve the app without chaos.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+---
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+## 1. Project Identity
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+- **Type:** Web application
+- **Primary Stack:**  
+  - Framework: Next.js  
+  - UI: React  
+  - Language: TypeScript  
+  - Styling: Tailwind CSS  
+  - Component library: shadcn/ui  
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+- **Primary Domain:**  
+  Parsing, structuring, and exploring **legal case law** (case texts, metadata, citations, etc).
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- **Core Goal:**  
+  Help users **search, browse, and read** case law clearly, efficiently, and safely, *without* claiming to provide legal advice.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+---
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## 2. High-Level Architecture
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### 2.1 Core Design Principles
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+1. **Type-safety first**
+   - Use strict TypeScript.
+   - Public interfaces (APIs, components, models) must be explicitly typed.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+2. **Separation of concerns**
+   - UI vs domain logic vs infrastructure are clearly separated.
+   - Domain logic must not be embedded directly in React components.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+3. **Server/Client clarity (Next.js)**
+   - Prefer **Server Components** for data loading, parsing, and heavy logic.
+   - Use **Client Components** only for interactions (filters, UI state, modals, etc).
+
+4. **Minimalist, content-first UX**
+   - The app emphasizes **readability of case text** and **clarity of metadata**.
+   - No flashy animations that distract from the content.
+
+5. **Legal & ethical guardrails**
+   - Must not present itself as legal advice.
+   - Must show a clear disclaimer in UI (e.g., footer, About, onboarding).
+
+
+
+
+
